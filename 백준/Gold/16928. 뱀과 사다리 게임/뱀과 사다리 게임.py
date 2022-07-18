@@ -1,4 +1,4 @@
-# 내 풀이1
+# 내 풀이2 - 위 풀이 정리
 # 큐를 이용한 반복구조로 bfs 풀이
 
 import sys
@@ -35,19 +35,16 @@ def bfs(start, end):
 
 
 
-N, M = map(int, input().split())   # N: 사다리수, M: 뱀의 수
+N, M = map(int, sys.stdin.readline().split())   # N: 사다리수, M: 뱀의 수
 
 # 사다리와 뱀 정보를 딕셔너리에 기록 ({출발점:도착점})
 teleport = {}
 for _ in range(N+M):
-  start, end = map(int, input().split())
+  start, end = map(int, sys.stdin.readline().split())
   teleport[start] = end
 
 # 10 x 10 크기의 게임판 만들기
 plate = [0] * 101
 
 # 1번 칸에서 출발해서 100번 칸에 도달하기 위해 주사위를 최소 몇 번 굴려야하는지 출력
-if 1 in teleport and teleport[1] == 100:
-  print(0)
-else:
-  print(bfs(1, 100))   
+print(bfs(1, 100))   
