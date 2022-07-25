@@ -1,16 +1,16 @@
-# 내 풀이
+# 3개의 자연수를 입력받아 A, B, C 변수에 할당
+A = int(input())
+B = int(input())
+C = int(input())
 
-import sys
-import collections
+# 3개의 자연수 곱하기
+multiply = A * B * C
 
-cnt = 3
-nums = []
-while cnt > 0:
-  nums.append(int(input()))
-  cnt -= 1
+# 곱한 값을 for 반복문으로 돌면서 리스트 자료형에 기록
+cnts = [0] * 10   # 인덱스 == 0~9, 값 == 각 숫자의 갯수(0으로 초기화)
+for num in str(multiply):
+    cnts[int(num)] += 1
 
-mul_num = str(nums[0] * nums[1] * nums[2])
-dictionary = collections.Counter(mul_num)
-
-for idx in range(0,9+1):
-  print(dictionary[str(idx)])
+# 0부터 9까지 숫자 갯수를 차례로 출력
+for cnt in cnts:
+    print(cnt)
