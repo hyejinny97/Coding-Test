@@ -1,0 +1,5 @@
+Knuth-Morris-Pratt
+
+Mirko-Slavko
+
+Pasko-Patak
