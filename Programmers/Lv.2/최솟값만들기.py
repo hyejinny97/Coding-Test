@@ -21,16 +21,15 @@
 
 
 # 코드 
-from audioop import reverse
 import sys
 
-sys.stdin = open('input_text/최솟값만들기.txt')
+
 
 def solution(A,B):
     A.sort()
     B.sort(reverse=True)
-
+    
     return sum(x[0] * x[1] for x in zip(A, B))
 
-
+  
 # 실행 결과: 성공

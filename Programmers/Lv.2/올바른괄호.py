@@ -28,8 +28,10 @@ def solution(s):
         if par == '(':
             stack.append('(')
         else:
-            if not stack or stack.pop() != '(':
+            if not stack:
                 return False
+            else:
+                stack.pop()
     
     if not stack:
         return True
