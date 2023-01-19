@@ -1,0 +1,2 @@
+["sun", "bed", "car"] 1
+["abce", "abcd", "cdx"] 2
