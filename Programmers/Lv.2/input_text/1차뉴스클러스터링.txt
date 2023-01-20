@@ -1,0 +1,4 @@
+FRANCE french
+handshake shake hands	
+aa1+aa2 AAAA12
+E=M*C^2 e=m*c^2
