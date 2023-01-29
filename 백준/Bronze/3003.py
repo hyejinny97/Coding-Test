@@ -27,11 +27,11 @@ import sys
 
 sys.stdin = open('input_text/3003.txt')
 
-peices = list(map(int, input().split()))
+pieces = list(map(int, input().split()))
 normal = [1, 1, 2, 2, 2, 8]
 
 for i in range(6):
-    print(normal[i] - peices[i], end=' ')   
+    print(normal[i] - pieces[i], end=' ')   
 
 
 

@@ -1,0 +1,31 @@
+# https://www.acmicpc.net/problem/10998
+# 문제10998번.A x B
+# 시간: 2초, 메모리: 256MB
+
+
+
+# 입력
+'''
+1. 정수 A, B
+- 1 < A,B < 10
+'''
+
+
+
+# 출력
+'''
+1. A x B 결과 출력
+'''
+
+
+
+# 코드
+import sys
+
+sys.stdin = open('input_text/10998.txt')
+
+A, B = list(map(int, input().split()))
+print(A * B)
+
+
+# 실행 결과: 성공(메모리:30864kb, 시간:68ms)
