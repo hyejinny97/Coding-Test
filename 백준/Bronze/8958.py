@@ -20,10 +20,10 @@
 
 
 
-# 코드
+# 코드 1
 import sys
 
-sys.stdin = open("input_text/3_OX퀴즈.txt")
+sys.stdin = open("input_text/8958.txt")
 
 T = int(input())
 for _ in range(T):
@@ -43,5 +43,26 @@ for _ in range(T):
     print(rst)
 
 
-
 # 실행결과(메모리:30840KB, 시간:92ms)
+
+
+
+# 코드 2
+import sys
+
+sys.stdin = open("input_text/8958.txt")
+
+T = int(input())
+for _ in range(T):
+    quizs = input()
+    rst = [0]  # 각 퀴즈의 점수
+    for q in quizs:
+        if q == 'O':
+            rst.append(rst[-1] + 1)
+            continue
+        rst.append(0)
+        
+    print(sum(rst))
+
+
+# 실행결과(메모리:31256KB, 시간:52ms)
