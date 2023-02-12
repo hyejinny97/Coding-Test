@@ -26,7 +26,7 @@ import sys
 sys.stdin = open('input_text/1065.txt')
 
 # 양의 정수 각 자리가 등차수열이면 True 반환
-def isHansu(n: int) -> bool:   
+def is_hansu(n: int) -> bool:   
     num = str(n)
     if len(num) <= 2:
         return True
@@ -42,7 +42,7 @@ N = int(input())
 
 cnt = 0   # 한수의 갯수 카운트
 for n in range(1, N + 1):
-    if isHansu(n):
+    if is_hansu(n):
         cnt += 1
 
 print(cnt)
