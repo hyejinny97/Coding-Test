@@ -59,11 +59,40 @@ def solution(cacheSize, cities):
     return runtime
 
 
-# 실행 결과: 성공
+# 실행 결과: 실패(cacheSize = 0일 때를 처리해주지 못함)
 
 
 
 # 코드 2
+import sys
+from collections import deque
+
+sys.stdin = open('input_text/1차캐시.txt')
+
+def solution(cacheSize, cities):
+    if not cacheSize:
+        return len(cities) * 5
+
+    runtime = 0
+    q = deque([])
+    for city in cities:
+        city = city.lower()
+        if city not in q:
+            if q and len(q) == cacheSize:
+                q.popleft()
+            runtime += 5
+        else:
+            q.remove(city)
+            runtime += 1
+        q.append(city)
+    return runtime
+
+
+# 실행 결과: 성공
+
+
+
+# 코드 3
 
 # 접근방법
 '''
