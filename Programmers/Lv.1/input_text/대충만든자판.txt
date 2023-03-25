@@ -1,0 +1,3 @@
+["ABACD", "BCEFD"] ["ABCD","AABB"]
+["AA"] ["B"]
+["AGZ", "BSSS"] ["ASA","BGZ"]
