@@ -1,0 +1,2 @@
+["i", "drink", "water"] ["want", "to"]
+["i", "water", "drink"] ["want", "to"]
