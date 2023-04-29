@@ -66,7 +66,35 @@ def solution(number, k):
     
     return rst
 
-print(solution("1924", 2))
-print(solution("1231234", 3))
-print(solution("4177252841", 4))
+
 # 실행 결과: 실패(시간 초과)
+
+
+
+# 코드 3
+
+# 접근방법
+'''
+- 가장 높은 자리수에 위치한 수가 클수록 가장 큰 수를 구할 수 있음
+- 참고: https://wellsw.tistory.com/m/205
+'''
+import sys
+
+sys.stdin = open('input_text/큰수만들기.txt')
+
+def solution(number, k):
+    stack = []   # 만들고자하는 가장 큰 수
+    for num in number:
+        while stack and stack[-1] < num and k > 0:
+            stack.pop()
+            k -= 1
+        stack.append(num)
+    
+    # 아직 제거되지 못한 숫자는 뒤에서 삭제
+    if k > 0:
+        stack = stack[:-k]
+
+    return ''.join(stack)
+
+
+# 실행 결과: 성공
