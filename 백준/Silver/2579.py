@@ -101,3 +101,41 @@ elif N >= 2:
 
 
 # 실행 결과: 실패
+
+
+
+# 코드 3
+
+# 접근방법
+'''
+- 현재 위치의 최댓값 = 이전까지의 수의 합 최댓값 + 현재의 수
+- 즉, 각 칸은 현재 위치의 최댓값이 됨
+
+<점화식>
+1. dp[i] = dp[i - 3] + scores[i - 1] + scores[i]
+2. dp[i] = dp[i - 2] + scores[i]
+
+참고) https://velog.io/@hyuntall/%EB%B0%B1%EC%A4%80-2579%EB%B2%88-%EA%B3%84%EB%8B%A8-%EC%98%A4%EB%A5%B4%EA%B8%B0-%EB%AC%B8%EC%A0%9C-%ED%92%80%EC%9D%B4-%ED%8C%8C%EC%9D%B4%EC%8D%AC
+'''
+import sys
+
+sys.stdin = open('input_text/2579.txt')
+
+N = int(input())
+scores = [0] + [int(input()) for _ in range(N)]  
+dp = [0] * (N + 1)  # 각 칸은 현 위치까지 오는데 점수 최댓값
+
+if N == 1:
+    print(scores[1])
+elif N == 2:
+    print(sum(scores[:3]))
+else:
+    dp[1] = scores[1]
+    dp[2] = sum(scores[:3])
+    for i in range(3, N + 1):
+        dp[i] = max(dp[i - 3] + scores[i - 1] + scores[i], dp[i - 2] + scores[i])
+
+    print(dp[-1])
+
+
+# 실행 결과: 성공(메모리:31256kb, 시간:48ms)
