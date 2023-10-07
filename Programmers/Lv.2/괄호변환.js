@@ -1,8 +1,6 @@
 // https://school.programmers.co.kr/learn/courses/30/lessons/60058
 // 코딩테스트연습 < 2020 KAKAO BLIND RECRUITMENT < 문제.괄호 변환
 
-
-
 // 입력
 /*
 1. "균형잡힌 괄호 문자열" p
@@ -10,9 +8,6 @@
 - 2 <= p 길이 <= 1,000인 짝수
 - 문자열 p를 이루는 '(' 와 ')' 의 개수는 항상 같음
 */
-
-
-
 
 // 출력
 /*
@@ -32,14 +27,70 @@
   4-5. 생성된 문자열을 반환합니다.
 */
 
-
-
-
 // 코드
-function solution(p) {
-    var answer = '';
-    return answer;
+// '올바른 괄호 문자열'인지 확인하는 함수
+function isCorrectParenthesis(par) {
+  let leftParCnt = 0; // 왼쪽 괄호 개수
+
+  for (let p of par) {
+    if (p === "(") leftParCnt += 1;
+    else leftParCnt -= 1;
+
+    if (leftParCnt < 0) return false;
+  }
+
+  return !leftParCnt;
 }
 
+// 괄호를 반대로 바꾸는 함수
+function reverseParenthesis(par) {
+  let reversedPar = "";
 
-// 실행 결과: 
+  for (let p of par) {
+    if (p === "(") reversedPar += ")";
+    else reversedPar += "(";
+  }
+
+  return reversedPar;
+}
+
+// 두 '균형 잡힌 괄호 문자열'로 쪼개는 함수
+function splitParenthesis(par) {
+  if (!par) return "";
+
+  // '균형 잡힌 괄호 문자열'이 되는 u 찾기
+  let leftParCnt = 0;
+  for (let lastIdx = 0; lastIdx < par.length; lastIdx++) {
+    if (par[lastIdx] === "(") leftParCnt += 1;
+    else leftParCnt -= 1;
+
+    if (leftParCnt === 0) {
+      const u = par.slice(0, lastIdx + 1);
+      const v = par.slice(lastIdx + 1);
+      if (isCorrectParenthesis(u)) return u + splitParenthesis(v);
+      else
+        return (
+          "(" +
+          splitParenthesis(v) +
+          ")" +
+          reverseParenthesis(u.slice(1, lastIdx))
+        );
+    }
+  }
+}
+
+function solution(p) {
+  return splitParenthesis(p);
+}
+
+const inputs = require("fs")
+  .readFileSync("./input_text/괄호변환.txt")
+  .toString()
+  .trim()
+  .split("\n");
+
+inputs.forEach((testCase) => {
+  console.log(solution(testCase.trim()));
+});
+
+// 실행 결과: 성공
